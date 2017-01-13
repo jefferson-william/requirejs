@@ -1670,6 +1670,7 @@ var requirejs, require, define;
                     url = syms.join('/');
                     url += (ext || (/^data\:|^blob\:|\?/.test(url) || skipExt ? '' : '.js'));
                     url = (url.charAt(0) === '/' || url.match(/^[\w\+\.\-]+:/) ? '' : config.baseUrl) + url;
+                    url = /\.gz/g.test(url) ? url.replace(/(.*)(\.gz)(.*)/, '$1$3.gz') : url;
                 }
 
                 return config.urlArgs && !/^blob\:/.test(url) ?
